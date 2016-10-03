@@ -10,7 +10,7 @@ Keep your colors in sync across multiple documents by creating.
 
 1. Create a color palette using Shared Styles:
 
-![Color Palette](screens/ColorPalette.png "Color Palette")
+![Color Palette](/screens/ColorPalette.png)
 
 [Download Sketch Template](https://github.com/marianomike/sketch-sharedcolorpalette/tree/master/Templates)
 
