@@ -1,19 +1,17 @@
 Shared Color Palette for Sketch
 ==================================
 
-## Creates a Shared Color Palette to sync colors between files
-
 Keep your colors in sync across multiple documents by creating a system of JSON import/export.
 
 
-## Create a color palette using Shared Styles:
+## Create a color palette using a Sketch document and Shared Styles:
 
 ![Color Palette](Screens/ColorPalette.png)
 
 [Download Sketch Template](https://github.com/marianomike/sketch-sharedcolorpalette/tree/master/Templates)
 
 
-## Export Shared Styles to a JSON file
+## From Sketch Color Palette file, export Shared Styles to a JSON file
 
 *`cmd` + `ctrl` + `shift` +* **`9`**
 
