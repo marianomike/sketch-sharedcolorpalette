@@ -3,6 +3,8 @@ Shared Color Palette for Sketch
 
 Keep your colors in sync across multiple documents by creating a system of JSON import/export.
 
+[Read about this plugin here](https://medium.com/@marianomike/the-beginners-guide-to-writing-sketch-plugins-part-7-creating-a-shared-color-palette-9c0a1899ee02#.ylmwnj1e9)
+
 
 ## Create a color palette using a Sketch document and Shared Styles:
 
