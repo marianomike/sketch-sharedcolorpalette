@@ -12,7 +12,7 @@ Keep your colors in sync across multiple documents by creating.
 
 ![Color Palette](screens/ColorPalette.png "Color Palette")
 
-Download Sketch template: https://github.com/marianomike/sketch-sharedcolorpalette/tree/master/Templates
+[Download Sketch Template](https://github.com/marianomike/sketch-sharedcolorpalette/tree/master/Templates)
 
 2. Export Shared Styles to a JSON file
 
