@@ -6,26 +6,27 @@ Shared Color Palette for Sketch
 Keep your colors in sync across multiple documents by creating a system of JSON import/export.
 
 
-## How to use
-
-1. Create a color palette using Shared Styles:
+## Create a color palette using Shared Styles:
 
 ![Color Palette](Screens/ColorPalette.png)
 
 [Download Sketch Template](https://github.com/marianomike/sketch-sharedcolorpalette/tree/master/Templates)
 
-2. Export Shared Styles to a JSON file
+
+## Export Shared Styles to a JSON file
 
 *`cmd` + `ctrl` + `shift` +* **`9`**
 
-3. In new document, import JSON file
+
+## In new document, import JSON file
 
 *`cmd` + `ctrl` + `shift` +* **`8`**
 
 
+
 ## Install
 
-Copy **`DuplicateSymbol.sketchplugin`** to **Sketch** plugins folder.
+Copy **`SharedColorPalette.sketchplugin`** to **Sketch** plugins folder.
 
 
 ## Author
