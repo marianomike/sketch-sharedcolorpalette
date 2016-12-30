@@ -1,3 +1,11 @@
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function colorFromString(value) {
+    var immutable = MSImmutableColor.colorWithSVGString_(value);
+    return MSColor.alloc().initWithImmutableObject_(immutable);
+}
 
 function alert(title, message){
 	var app = [NSApplication sharedApplication];
