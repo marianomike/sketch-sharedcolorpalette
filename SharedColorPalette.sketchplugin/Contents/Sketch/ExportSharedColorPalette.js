@@ -52,7 +52,7 @@ var onRun = function(context) {
     //convert variables to Strings for JSON export
     var colorName = String(layerStyle.name());
     var colorRaw = layerStyle.valueGeneric().fillGeneric().color();
-    var colorHex = String("#"+colorRaw.hexValue());
+    var colorHex = rgbToHex(colorRaw.red()*255, colorRaw.green()*255, colorRaw.blue()*255);
 
     //push this info into the palette array
     paletteArray.push({
