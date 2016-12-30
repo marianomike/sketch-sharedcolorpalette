@@ -69,7 +69,7 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
       doc.documentData().assets().setColors([]);
 
       //create a color variable out of the colorValue so we can add it to the color array
-      var color = MSColor.colorWithSVGString(colorValue);
+      var color = colorFromString(colorValue);
       documentColors.push(color);
 
       //set the documents colors with the imported colors
@@ -80,7 +80,7 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
         //create a new style with fill and add it to the shared styles list
         var style = MSStyle.alloc().init();
         var fill = style.addStylePartOfType(0);
-        fill.color = MSColor.colorWithSVGString(colorValue);
+        fill.color = colorFromString(colorValue);
         sharedStyles.addSharedStyleWithName_firstInstance(colorName,style);
 
       } else {
@@ -100,9 +100,9 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
             //checks if the existing color value is different than the imported one
             if(oldFill != colorValue){
               //change the fill color of the shared style
-              fill.color = MSColor.colorWithSVGString(colorValue);
+              fill.color = colorFromString(colorValue);
               //create a color to be added to the Document colors
-              var color = MSColor.colorWithSVGString(colorValue);
+              var color = colorFromString(colorValue);
               //reference the ID of the style to be able to update existing styles later
               var styleID = layerStyle.objectID();
               //update all layers using this same ID
