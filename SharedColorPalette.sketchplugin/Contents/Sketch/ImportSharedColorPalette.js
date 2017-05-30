@@ -2,8 +2,10 @@
 
 var onRun = function(context) {
 
-  var doc = context.document;
-  var sharedStyles = doc.documentData().layerStyles();
+  var sketch = context.api();
+  var doc = sketch.selectedDocument;
+
+  var sharedStyles = doc.sketchObject.documentData().layerStyles();
   var numberOfSharedStyles = Number(sharedStyles.numberOfSharedStyles());
 
   //create array to hold existing styles for reference later
@@ -66,14 +68,14 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
       }
 
       //clear out the existing document colors
-      doc.documentData().assets().setColors([]);
+      doc.sketchObject.documentData().assets().setColors([]);
 
       //create a color variable out of the colorValue so we can add it to the color array
       var color = colorFromString(colorValue);
       documentColors.push(color);
 
       //set the documents colors with the imported colors
-      doc.documentData().assets().setColors(documentColors);
+      doc.sketchObject.documentData().assets().setColors(documentColors);
 
       if(colorExists == false){
 
@@ -93,8 +95,8 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
           //checks if the name of the imported color is the same as the existing
           if(styleName == colorName){
 
-            var fill = layerStyle.valueGeneric().fills().firstObject();
-            var oldFill = String("#" + fill.colorGeneric().hexValue());
+            var fill = layerStyle.value().fills().firstObject();
+            var oldFill = String("#" + fill.color().immutableModelObject().hexValue());
             var styleIndex = k;
 
             //checks if the existing color value is different than the imported one
@@ -112,7 +114,7 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
         }
       }
       //refresh the inspector to show updates
-      doc.reloadInspector();
+      doc.sketchObject.reloadInspector();
     }
   }
   //alert user import is complete
@@ -122,7 +124,7 @@ function updateSharedStyles(doc, sharedStyles, palette, existingStyles, filePath
 
 function updateAllExistingStyles(doc, styleID, sharedStyles, index){
 	//reference the pages array in the document
-	var pages = [doc pages];
+	var pages = doc.sketchObject.pages();
 
   for (var i = 0; i < pages.count(); i++){
 		//reference each page

@@ -1,7 +1,7 @@
 {
     "name" : "Shared Color Palette",
     "identifier" : "com.marianomike.sharedcolorpalette",
-    "version" : "1.0",
+    "version" : "1.2",
     "description" : "Share Color Palettes between Sketch Files.",
     "authorEmail" : "mike@uiuxartist.com",
     "author" : "Mike Mariano",

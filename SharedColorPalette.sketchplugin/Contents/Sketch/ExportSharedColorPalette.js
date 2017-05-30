@@ -2,13 +2,14 @@
 
 var onRun = function(context) {
 
-  var doc = context.document;
+  var sketch = context.api();
+  var doc = sketch.selectedDocument;
 
   //get the name of the document and remove the file extension if there is one
-  var documentName = removeFileExtension(doc.displayName());
+  var documentName = removeFileExtension(doc.sketchObject.displayName());
 
   //reference the shared styles
-  var sharedStyles = doc.documentData().layerStyles();
+  var sharedStyles = doc.sketchObject.documentData().layerStyles();
 
   //reference the number of shared styles
   var numberOfSharedStyles = Number(sharedStyles.numberOfSharedStyles());
@@ -51,8 +52,7 @@ var onRun = function(context) {
 
     //convert variables to Strings for JSON export
     var colorName = String(layerStyle.name());
-    var colorRaw = layerStyle.valueGeneric().fillGeneric().color();
-    var colorHex = rgbToHex(colorRaw.red()*255, colorRaw.green()*255, colorRaw.blue()*255);
+    var colorHex = "#" + layerStyle.value().fill().color().immutableModelObject().hexValue();
 
     //push this info into the palette array
     paletteArray.push({
