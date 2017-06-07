@@ -18,57 +18,46 @@ var onRun = function(context) {
   var fileTypes = [NSArray arrayWithObjects:@"json", nil];
 
   //create select folder window to save the file
-  var panel = [NSOpenPanel openPanel];
+  var panel = [NSSavePanel savePanel];
   [panel setCanChooseDirectories:true];
   [panel setCanCreateDirectories:true];
   [panel setAllowedFileTypes:fileTypes];
+  [panel setNameFieldStringValue:documentName+".json"];
 
   //the text on the button in the panel
   panel.setPrompt("Save Color Palette");
 
-  var clicked = [panel runModal];
-
   //check if Ok has been clicked
-  if (clicked == NSFileHandlingPanelOKButton) {
+  if (panel.runModal()) {
+    //create an array to hold the palette
+    var paletteArray = [];
 
-    var isDirectory = true;
-    //get the folder path
-    var firstURL = [[panel URLs] objectAtIndex:0];
-    //format it to a string
-    var file_path = [NSString stringWithFormat:@"%@", firstURL];
+    for (var z = 0; z < numberOfSharedStyles; z++){
 
-    //remove the file:// path from string
-    if (0 === file_path.indexOf("file://")) {
-      file_path = file_path.substring(7);
+      layerStyle = sharedStyles.objects().objectAtIndex(z);
+
+      //convert variables to Strings for JSON export
+      var colorName = String(layerStyle.name());
+      var colorHex = "#" + layerStyle.value().fill().color().immutableModelObject().hexValue();
+
+      //push this info into the palette array
+      paletteArray.push({
+        name: colorName,
+        value: colorHex,
+      })
+
     }
+    //get the file path
+    var file_path = panel.URL().path();
+    // Create the JSON object from paletteArray
+    var jsonObj = { "Color Palette": paletteArray };
+    // Convert the object to a json string and format it
+    var file = NSString.stringWithString(JSON.stringify(jsonObj, null, "\t"));
+    // Save the file
+    file.writeToFile_atomically_encoding_error(file_path, true, NSUTF8StringEncoding, null);
+
+    var alertMessage = documentName+".json saved to: " + file_path;
+    alert("Shared Color Palette JSON Exported!", alertMessage);
   }
-
-  //create an array to hold the palette
-  var paletteArray = [];
-
-  for (var z = 0; z < numberOfSharedStyles; z++){
-
-    layerStyle = sharedStyles.objects().objectAtIndex(z);
-
-    //convert variables to Strings for JSON export
-    var colorName = String(layerStyle.name());
-    var colorHex = "#" + layerStyle.value().fill().color().immutableModelObject().hexValue();
-
-    //push this info into the palette array
-    paletteArray.push({
-      name: colorName,
-      value: colorHex,
-    })
-
-  }
-  // Create the JSON object from paletteArray
-  var jsonObj = { "Color Palette": paletteArray };
-  // Convert the object to a json string and format it
-  var file = NSString.stringWithString(JSON.stringify(jsonObj, null, "\t"));
-  // Save the file
-  [file writeToFile:file_path+documentName+".json" atomically:true encoding:NSUTF8StringEncoding error:null];
-
-  var alertMessage = documentName+".json saved to: " + file_path;
-  alert("Shared Color Palette JSON Exported!", alertMessage);
 
 };
