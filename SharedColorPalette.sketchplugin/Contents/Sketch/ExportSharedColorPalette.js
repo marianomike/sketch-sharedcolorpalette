@@ -38,7 +38,7 @@ var onRun = function(context) {
 
       //convert variables to Strings for JSON export
       var colorName = String(layerStyle.name());
-      var colorHex = "#" + layerStyle.value().fill().color().immutableModelObject().hexValue();
+      var colorHex = "#" + layerStyle.value().firstEnabledFill().color().immutableModelObject().hexValue();
 
       //push this info into the palette array
       paletteArray.push({
